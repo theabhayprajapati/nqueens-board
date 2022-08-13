@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>8queens</title>
+
     <style>
         body {
             /* every thing center */
@@ -23,6 +24,22 @@
             align-items: center;
         }
 
+        button {
+            border: 1px solid black;
+            margin: 0px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            width: 50px;
+            height: 25px;
+            text-decoration: none;
+            /* my 2 */
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
         #board {
             /* 8 cols */
             display: grid;
@@ -36,6 +53,21 @@
             /* height 50*8 */
             height: 400px;
             padding: 0;
+        }
+
+        .media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25px;
+            height: 25px;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
         }
 
         @media (max-width: 640px) {
@@ -71,11 +103,26 @@
 <body>
     <center>
         <h1>8queens</h1>
+        <button>
+            <a href="index.html">Reset</a>
+        </button>
         <div id="board"></div>
         <p>
             created by <a href="https://twitter.com/abhayprajapati_/" target="_blank">@abhayprajapati</a>
 
         </p>
+        <div class="socials">
+            <!-- github  twitter -->
+            <a href="
+            https://github.com/theabhayprajapati/nqueens-board" target="_blank">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="github"
+                    class="media" />
+            </a>
+            <a href="https://twitter.com/abhayprajapti_" target="_blank">
+                <img src="https://cdn.worldvectorlogo.com/logos/twitter-3.svg" alt="twitter" class="media" />
+            </a>
+
+        </div>
     </center>
     <script>
         /*
