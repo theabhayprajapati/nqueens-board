@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8queens</title>
+    <style>
+        .box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            margin: 0px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #board {
+            /* 8 cols */
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            /* 8 rows */
+            grid-template-rows: repeat(8, 50px);
+            /* border */
+            border: 1px solid black;
+            /* width 50*8 */
+            width: 400px;
+            /* height 50*8 */
+            height: 400px;
+            padding: 0;
+        }
+
+        @media (max-width: 640px) {
+
+            /* 30px box */
+            .box {
+                width: 35px;
+                height: 35px;
+                margin: 0;
+            }
+
+            #board {
+                width: 280px;
+                height: 280px;
+                /* no gaps cols */
+                grid-template-columns: repeat(8, 35px);
+                /* no gaps rows */
+                grid-template-rows: repeat(8, 35px);
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>8queens</h1>
+    <div id="board"></div>
+    <script>
+        /*
+          <div class="box">
+  
+          </div>
+          */
+        var board = document.getElementById("board");
+        var boxes = [];
+        for (var i = 0; i < 8; i++) {
+            for (var j = 0; j < 8; j++) {
+                var box = document.createElement("div");
+                box.className = "box";
+                box.style.backgroundColor = "white";
+                box.style.gridColumn = j + 1;
+                box.style.gridRow = i + 1;
+                box.title = i + "," + j;
+
+                board.appendChild(box);
+                boxes.push(box);
+            }
+        }
+        // on click on any boxes add this
+        boxes.forEach(function (box) {
+            box.addEventListener("click", function () {
+                // vibrate(100)
+                navigator.vibrate(100);
+                var row = parseInt(this.style.gridRow);
+                var col = parseInt(this.style.gridColumn);
+                console.log(row, col);
+                //    add this svg   
+                box.innerHTML = `<svg width="512px" height="512px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#000"
+                d="M477.518 181.966a25 25 0 0 1-34.91 23l-62.29 150.26h-248.92l-62.24-150.19a25 25 0 1 1 9.73-7.29l87 71.2 20.92-126.4a25 25 0 1 1 14.7-1.85l54.31 117 54.42-117.3a25 25 0 1 1 14.58 2.08l20.93 126.42 87.26-71.3a25 25 0 1 1 44.51-15.63zm-71.66 241.25h-300v60h300v-60zm-27.75-52h-244.22v36h244.22v-36z" />
+                </svg>`;
+                updateDialognals(row, col);
+            });
+        });
+
+        function updateDialognals(row, col) {
+            // change the background color of the box, in the same row and col
+            boxes.forEach(function (box) {
+                var boxRow = parseInt(box.style.gridRow);
+                var boxCol = parseInt(box.style.gridColumn);
+                if (boxRow == row || boxCol == col) {
+                    box.style.backgroundColor = "#de6d6d";
+                }
+                // diagonal
+                if (Math.abs(boxRow - row) == Math.abs(boxCol - col)) {
+                    box.style.backgroundColor = "#de6d6d";
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>
