@@ -125,13 +125,23 @@
         </div>
     </center>
     <script>
-        /*
-          <div class="box">
-  
-          </div>
-          */
         var board = document.getElementById("board");
         var boxes = [];
+        var rows = [];
+        var cols = [];
+        var matrix = [];
+        var total_cols = 8;
+        var total_rows = 8;
+        var total_boxes = total_cols * total_rows;
+        // make a 2d array
+        for (var i = 0; i < total_rows; i++) {
+            matrix[i] = [];
+            for (var j = 0; j < total_cols; j++) {
+                matrix[i][j] = j;
+            }
+        }
+        console.log(matrix);
+        // create a board with 
         for (var i = 0; i < 8; i++) {
             for (var j = 0; j < 8; j++) {
                 var box = document.createElement("div");
@@ -139,44 +149,157 @@
                 box.style.backgroundColor = "white";
                 box.style.gridColumn = j + 1;
                 box.style.gridRow = i + 1;
-                box.title = i + "," + j;
-
+                box.title = i + 1 + "," + Number(j + 1);
+                box.setAttribute(
+                    "selected",
+                    "false"
+                )
+                box.setAttribute('row', Number(i));
+                box.setAttribute('col', j);
                 board.appendChild(box);
                 boxes.push(box);
             }
         }
         // on click on any boxes add this
-        boxes.forEach(function (box) {
-            box.addEventListener("click", function () {
-                // vibrate(100)
-                navigator.vibrate(100);
-                var row = parseInt(this.style.gridRow);
-                var col = parseInt(this.style.gridColumn);
-                console.log(row, col);
-                //    add this svg   
-                box.innerHTML = `<svg width="512px" height="512px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#000"
-                d="M477.518 181.966a25 25 0 0 1-34.91 23l-62.29 150.26h-248.92l-62.24-150.19a25 25 0 1 1 9.73-7.29l87 71.2 20.92-126.4a25 25 0 1 1 14.7-1.85l54.31 117 54.42-117.3a25 25 0 1 1 14.58 2.08l20.93 126.42 87.26-71.3a25 25 0 1 1 44.51-15.63zm-71.66 241.25h-300v60h300v-60zm-27.75-52h-244.22v36h244.22v-36z" />
-                </svg>`;
-                updateDialognals(row, col);
-            });
-        });
+        var selected_location = [];
+        var selected_places = [];
+        for (var i = 0; i < total_rows; i++) {
+            selected_places[i] = [];
+            for (var j = 0; j < total_cols; j++) {
+                selected_places[i][j] = false;
+            }
+        }
+        console.log(selected_places);
+        const updateColorsOfBoxes = () => {
+            console.log('selected locatoin from colors boxes')
+            console.log(selected_location);
+            if (selected_location.length > 0) {
+                console.log('making red.')
+                for (var i = 0; i < selected_location.length; i++) {
+                    updateBoxValues(selected_location[i][0], selected_location[i][1])
+                }
+            } else {
+                console.log("making all white")
+                boxes.forEach((box) => {
+                    box.style.backgroundColor = 'white'
+                })
+            }
 
-        function updateDialognals(row, col) {
-            // change the background color of the box, in the same row and col
-            boxes.forEach(function (box) {
-                var boxRow = parseInt(box.style.gridRow);
-                var boxCol = parseInt(box.style.gridColumn);
-                if (boxRow == row || boxCol == col) {
-                    box.style.backgroundColor = "#de6d6d";
-                }
-                // diagonal
-                if (Math.abs(boxRow - row) == Math.abs(boxCol - col)) {
-                    box.style.backgroundColor = "#de6d6d";
-                }
-            });
         }
 
+        const updateBoxValues = (row, col) => {
+            console.log(row, " ", col);
+            for (var i = 0; i < total_rows; i++) {
+                console.log('making ' + i + ' row true')
+                selected_places[i][col] = true;
+            }
+            for (var i = 0; i < total_cols; i++) {
+                console.log('making ' + i + ' col true')
+                selected_places[row][i] = true;
+            }
+            // update all diagonals selected
+            var x = row;
+            var y = col;
+            while (x >= 0 && y >= 0) {
+                selected_places[x][y] = true;
+                x--;
+                y--;
+                console.log('working on diagonals')
+            }
+            x = row;
+            y = col;
+            while (x < total_rows && y >= 0) {
+                selected_places[x][y] = true;
+                x++;
+                y--;
+                console.log('working on diagonals')
+            }
+            x = row;
+            y = col;
+            while (x >= 0 && y < total_cols) {
+                selected_places[x][y] = true;
+                x--;
+                y++;
+                console.log('working on diagonals')
+            }
+            x = row;
+            y = col;
+            while (x < total_rows && y < total_cols) {
+                selected_places[x][y] = true;
+                x++;
+                y++;
+                console.log('working on diagonals')
+            }
+            console.log('selected_places');
+            console.log(selected_places);
+        }
+
+        const turnAllBoxesAsRed = () => {
+            console.log('true places')
+            boxes.forEach((box) => {
+                box.style.backgroundColor = 'white'
+            })
+            for (var i = 0; i < selected_places.length; i++) {
+                // console.log(selected_places[i])
+                for (var j = 0; j < selected_places[i].length; j++) {
+                    if (selected_places[i][j]) {
+                        boxes.forEach((box) => {
+                            if (box.getAttribute("row") == i && box.getAttribute('col') == j) {
+                                box.style.backgroundColor = 'red'
+                            }
+                        })
+                    }
+                }
+            }
+        }
+        function vibrate(duration) {
+            if (navigator.vibrate) {
+                navigator.vibrate(duration);
+            }
+        }
+        boxes.forEach((box) => {
+            box.addEventListener("click", (e) => {
+                var row = e.target.getAttribute("row");
+                var col = e.target.getAttribute("col");
+                boxes.forEach((box) => {
+                    box.style.backgroundColor = 'white'
+                })
+
+                for (var i = 0; i < total_rows; i++) {
+                    selected_places[i] = [];
+                    for (var j = 0; j < total_cols; j++) {
+                        console.log("making all selected places false")
+                        selected_places[i][j] = false;
+                    }
+                }
+                if (e.target.getAttribute("selected") == "false") {
+                    console.log(e.target.getAttribute("selected") + "selecting.");
+                    e.target.style.backgroundColor = "black";
+                    e.target.setAttribute("selected", "true");
+                    selected_location.push([Number(row), Number(col)]);
+                    e.target.innerHTML = "👑";
+                    updateColorsOfBoxes();
+                    // updateBox();
+                    turnAllBoxesAsRed();
+                    vibrate(100);
+                }
+                else {
+                    console.log(e.target.getAttribute("selected") + "deselecting.");
+                    e.target.setAttribute("selected", "false");
+                    e.target.innerHTML = "";
+                    for (var i = 0; i < selected_location.length; i++) {
+                        if (selected_location[i][0] == row && selected_location[i][1] == col) {
+                            selected_location.splice(i, 1);
+                        }
+                    }
+                    updateColorsOfBoxes();
+                    turnAllBoxesAsRed();
+                    vibrate(100);
+                }
+                console.log("selected Places")
+                console.log(selected_places);
+            })
+        })
     </script>
 </body>
 
