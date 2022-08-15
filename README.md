@@ -1,3 +1,4 @@
+![favicon](./favicon.ico)
 # nqueens-board
 ## solve n queens problem
 <img src="./maze.png" alt="maze"
