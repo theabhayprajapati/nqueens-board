@@ -126,12 +126,14 @@
     </center>
     <script>
         var board = document.getElementById("board");
+        const RED_SHADE = '#EA3C52'
         var boxes = [];
         var rows = [];
         var cols = [];
         var matrix = [];
         var total_cols = 8;
         var total_rows = 8;
+
         var total_boxes = total_cols * total_rows;
         // make a 2d array
         for (var i = 0; i < total_rows; i++) {
@@ -245,7 +247,7 @@
                     if (selected_places[i][j]) {
                         boxes.forEach((box) => {
                             if (box.getAttribute("row") == i && box.getAttribute('col') == j) {
-                                box.style.backgroundColor = 'red'
+                                box.style.backgroundColor = RED_SHADE
                             }
                         })
                     }
