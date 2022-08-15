@@ -5,6 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- meta title -->
+    <meta name="title" content="8queens" />
+    <!-- meta description -->
+    <meta name="description" content="8queens" />
+    <!-- meta keywords -->
+    <meta name="keywords" content="8queens" />
+    <!-- meta author -->
+    <meta name="author" content="abhayprajapati" />
+    <!-- faviscon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- meta image -->
+    <meta property="og:image" content="/favicon.ico" />
     <title>8queens</title>
 
     <style>
@@ -89,19 +101,28 @@
 
             }
         }
+
+        .red-pulse-box {
+            background-color: red;
+            /* animate pulse for 2 seconds */
+            animation: pulse 2s;
+        }
+
+        @keyframes pulse {
+            0% {
+                background-color: red;
+            }
+
+            50% {
+                background-color: transparent;
+            }
+
+            100% {
+                background-color: red;
+            }
+        }
     </style>
-    <!-- meta title -->
-    <meta name="title" content="8queens" />
-    <!-- meta description -->
-    <meta name="description" content="8queens" />
-    <!-- meta keywords -->
-    <meta name="keywords" content="8queens" />
-    <!-- meta author -->
-    <meta name="author" content="abhayprajapati" />
-    <!-- faviscon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <!-- meta image -->
-    <meta property="og:image" content="/favicon.ico" />
+
 </head>
 
 <body>
@@ -196,11 +217,9 @@
         const updateBoxValues = (row, col) => {
             console.log(row, " ", col);
             for (var i = 0; i < total_rows; i++) {
-                console.log('making ' + i + ' row true')
                 selected_places[i][col] = true;
             }
             for (var i = 0; i < total_cols; i++) {
-                console.log('making ' + i + ' col true')
                 selected_places[row][i] = true;
             }
             // update all diagonals selected
@@ -271,25 +290,47 @@
                     box.style.backgroundColor = 'white'
                 })
 
-                for (var i = 0; i < total_rows; i++) {
-                    selected_places[i] = [];
-                    for (var j = 0; j < total_cols; j++) {
-                        console.log("making all selected places false")
-                        selected_places[i][j] = false;
+
+                if (e.target.getAttribute("selected") == "false") {
+                    console.info(
+                        "selected place values", selected_places[row][col]
+                    )
+                    if (selected_places[row][col]) {
+                        // add class red-pulse-box
+                        e.target.classList.add("red-pulse-box");
+                        vibrate(400);
+                        updateColorsOfBoxes();
+                        // updateBox();
+                        turnAllBoxesAsRed();
+                        vibrate(100);
+                    } else {
+
+                        for (var i = 0; i < total_rows; i++) {
+                            selected_places[i] = [];
+                            for (var j = 0; j < total_cols; j++) {
+                                console.log("making all selected places false")
+                                selected_places[i][j] = false;
+                            }
+                        }
+                        console.log(e.target.getAttribute("selected") + "selecting.");
+                        e.target.style.backgroundColor = "black";
+                        e.target.setAttribute("selected", "true");
+                        selected_location.push([Number(row), Number(col)]);
+                        e.target.innerHTML = "👑";
+                        updateColorsOfBoxes();
+                        // updateBox();
+                        turnAllBoxesAsRed();
+                        vibrate(100);
                     }
                 }
-                if (e.target.getAttribute("selected") == "false") {
-                    console.log(e.target.getAttribute("selected") + "selecting.");
-                    e.target.style.backgroundColor = "black";
-                    e.target.setAttribute("selected", "true");
-                    selected_location.push([Number(row), Number(col)]);
-                    e.target.innerHTML = "👑";
-                    updateColorsOfBoxes();
-                    // updateBox();
-                    turnAllBoxesAsRed();
-                    vibrate(100);
-                }
                 else {
+                    for (var i = 0; i < total_rows; i++) {
+                        selected_places[i] = [];
+                        for (var j = 0; j < total_cols; j++) {
+                            console.log("making all selected places false")
+                            selected_places[i][j] = false;
+                        }
+                    }
                     console.log(e.target.getAttribute("selected") + "deselecting.");
                     e.target.setAttribute("selected", "false");
                     e.target.innerHTML = "";
