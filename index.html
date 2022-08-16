@@ -128,6 +128,12 @@
 <body>
     <center>
         <h1>8queens</h1>
+        <h3>
+            score: <span id="score">0</span>
+        </h3>
+        <h3 id="winning-message">
+
+        </h3>
         <button>
             <a href="index.html">Reset</a>
         </button>
@@ -294,7 +300,6 @@
                     box.style.backgroundColor = 'white'
                 })
 
-
                 if (e.target.getAttribute("selected") == "false") {
                     console.info(
                         "selected place values", selected_places[row][col]
@@ -349,6 +354,17 @@
                 }
                 console.log("selected Places")
                 console.log(selected_places);
+                // length of selected location is the score
+                var total_score = document.getElementById("score");
+                total_score.innerHTML = selected_location.length;
+                // if the length of selected location is equal to 8;
+                if (selected_location.length == 8) {
+                    // show the winning message
+                    var winning_message = document.getElementById("winning-message");
+                    winning_message.style.display = "block";
+                    winning_message.innerHTML = "🎊 you won! 🎊";
+
+                }
             })
         })
     </script>
