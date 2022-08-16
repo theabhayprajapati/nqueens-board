@@ -173,7 +173,11 @@
             for (var j = 0; j < 8; j++) {
                 var box = document.createElement("div");
                 box.className = "box";
-                box.style.backgroundColor = "white";
+                box.style.backgroundColor = "black";
+                // if the row and col addition is even then make the background black
+                if ((i + j) % 2 == 0) {
+                    box.style.backgroundColor = "white";
+                }
                 box.style.gridColumn = j + 1;
                 box.style.gridRow = i + 1;
                 box.title = i + 1 + "," + Number(j + 1);
