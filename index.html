@@ -218,12 +218,26 @@
             } else {
                 console.log("making all white")
                 boxes.forEach((box) => {
-                    box.style.backgroundColor = 'white'
+                    makeBlackWhite(box);
                 })
             }
 
         }
-
+        const makeBlackWhite = (box) => {
+            console.log('making black white');
+            var current_row = Number(box.getAttribute('row'));
+            var current_col = Number(box.getAttribute('col'));
+            // if addtion of row and col is even then make the background black
+            if ((current_row + current_col) % 2 == 0) {
+                box.style.backgroundColor = "white";
+                // full opacity
+                box.style.opacity = "1";
+            } else {
+                box.style.backgroundColor = "black";
+                // full opacity
+                box.style.opacity = "1";
+            }
+        }
         const updateBoxValues = (row, col) => {
             console.log(row, " ", col);
             for (var i = 0; i < total_rows; i++) {
@@ -272,7 +286,7 @@
         const turnAllBoxesAsRed = () => {
             console.log('true places')
             boxes.forEach((box) => {
-                box.style.backgroundColor = 'white'
+                makeBlackWhite(box);
             })
             for (var i = 0; i < selected_places.length; i++) {
                 // console.log(selected_places[i])
@@ -280,7 +294,8 @@
                     if (selected_places[i][j]) {
                         boxes.forEach((box) => {
                             if (box.getAttribute("row") == i && box.getAttribute('col') == j) {
-                                box.style.backgroundColor = RED_SHADE
+                                box.style.backgroundColor = RED_SHADE;
+                                box.style.opacity = "0.5";
                             }
                         })
                     }
@@ -297,7 +312,7 @@
                 var row = e.target.getAttribute("row");
                 var col = e.target.getAttribute("col");
                 boxes.forEach((box) => {
-                    box.style.backgroundColor = 'white'
+                    makeBlackWhite(box);
                 })
 
                 if (e.target.getAttribute("selected") == "false") {
