@@ -7,6 +7,20 @@ self.addEventListener('install', function (event) {
 // activate event pwa
 self.addEventListener('activate', function (event) {
     console.log('Service Worker: Activated');
+    // remove old cache
+    event.waitUntil(
+        caches.keys().then(function (cacheNames) {
+            return Promise.all(
+                cacheNames.map(function (cacheName) {
+                    if (cacheName !== CACHE_NAME) {
+                        console.log('Service Worker: Clearing Old Cache');
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        }
+        )
+    );
 }
 
 );
@@ -14,7 +28,7 @@ self.addEventListener('activate', function (event) {
 // fetch event pwa
 
 // cache index.html file for offline use
-var CACHE_NAME = 'cache-v1';
+var CACHE_NAME = 'cache-v2';
 var urlsToCache = [
     '/',
     '/index.html',
