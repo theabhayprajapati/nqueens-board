@@ -20,7 +20,8 @@ var urlsToCache = [
     '/index.html',
     '/assets/favicon.ico',
     '/assets/maze.png',
-
+    'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+    'https://cdn.worldvectorlogo.com/logos/twitter-3.svg',
 ]
 self.addEventListener('install', function (event) {
     event.waitUntil(
