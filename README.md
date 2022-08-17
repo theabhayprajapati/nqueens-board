@@ -1,7 +1,7 @@
-![favicon](./favicon.ico)
+![favicon](./assets/favicon.ico)
 # nqueens-board
 ## solve n queens problem
-<img src="./maze.png" alt="maze"
+<img src="./assets/maze.png" alt="maze"
 style="border-radius: 5px;"/>
 
 create with 💗 by [@abhayprajapati](https://twitter.com/abhayprajapati_)

@@ -9,13 +9,13 @@
     <meta name="description" content="An better way to solve n queens maze." />
     <meta name="keywords" content="8queens" />
     <meta name="author" content="abhayprajapati" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700;1,800;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@100;300;400;500;700;900&family=Ropa+Sans&family=Varela+Round&display=swap"
         rel="stylesheet">
-    <meta property="og:image" content="/favicon.ico" />
+    <meta property="og:image" content="assets/favicon.ico" />
     <title>N - Queens Maze</title>
 
     <style>
@@ -44,12 +44,12 @@
             justify-content: center;
             align-items: center;
             border-radius: 5px;
-            width: 50px;
-            height: 25px;
             text-decoration: none;
             /* my 2 */
             margin-top: 5px;
             margin-bottom: 5px;
+            padding: 5px;
+            text-transform: capitalize;
         }
 
         #board {
@@ -59,7 +59,6 @@
             /* 8 rows */
             grid-template-rows: repeat(8, 50px);
             /* border */
-            border: 1px solid black;
             /* width 50*8 */
             width: 400px;
             /* height 50*8 */
@@ -129,13 +128,16 @@
     <center>
         <h1>8queens</h1>
         <h3>
-            score: <span id="score">0</span>
+            Queens Pending: <span id="score">0</span>
         </h3>
         <h3 id="winning-message">
 
         </h3>
-        <button>
-            <a href="index.html">Reset</a>
+        <button id="reset">
+            <span>
+                🔃
+            </span>
+            refresh
         </button>
         <!-- make dailog for showing rules -->
 
@@ -374,7 +376,7 @@
                 console.log(selected_places);
                 // length of selected location is the score
                 var total_score = document.getElementById("score");
-                total_score.innerHTML = selected_location.length;
+                total_score.innerHTML = 8 - selected_location.length;
                 // if the length of selected location is equal to 8;
                 if (selected_location.length == 8) {
                     // show the winning message
@@ -385,6 +387,28 @@
                 }
             })
         })
+        const resetAll = () => {
+            boxes.forEach((box) => {
+                box.setAttribute("selected", "false");
+                box.innerHTML = "";
+                makeBlackWhite(box);
+                box.style.opacity = "1";
+            })
+            for (var i = 0; i < selected_places.length; i++) {
+                selected_places[i] = [];
+                for (var j = 0; j < selected_places[i].length; j++) {
+                    selected_places[i][j] = false;
+                }
+            }
+            selected_location = [];
+            var total_score = document.getElementById("score");
+            total_score.innerHTML = "0";
+            var winning_message = document.getElementById("winning-message");
+            winning_message.style.display = "none";
+        }
+        var resetBtn = document.getElementById("reset");
+        resetBtn.addEventListener("click", resetAll);
+
     </script>
 </body>
 
