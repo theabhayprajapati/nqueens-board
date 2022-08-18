@@ -1,21 +1,69 @@
 {
   "name": "N - Queens Maze",
-  "short_name": "nqueens",
-  "starturl": "/index.html",
+  "short_name": "N Queens",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#fff",
   "theme_color": "#fff",
+  "scope": "/",
+  "categories": ["game", "maze", "chess"],
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/assets/maze.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "/assets/applemusic48x48.jpg",
+      "sizes": "48x48",
+      "type": "image/jpg",
+      "purpose": "any"
     },
     {
-      "src": "/assets/maze.png",
+      "src": "/assets/applemusic72x72.jpg",
+      "sizes": "72x72",
+      "type": "image/jpg",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/applemusic96x96.jpg",
+      "sizes": "96x96",
+      "type": "image/jpg",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/applemusic144x144.jpg",
+      "sizes": "144x144",
+      "type": "image/jpg",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/applemusic168x168.jpg",
+      "sizes": "168x168",
+      "type": "image/jpg",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/applemusic192x192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/applemusic512x512.jpg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/jpg",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screen1.png",
+      "type": "image/png",
+      "sizes": "1128x2436",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/screenwin.png",
+      "type": "image/png",
+      "sizes": "1128x2436",
+      "purpose": "any"
     }
   ]
 }
