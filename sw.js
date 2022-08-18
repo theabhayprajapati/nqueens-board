@@ -1,3 +1,5 @@
+var CACHE_NAME = 'cache-v3';
+
 // install event pwa
 self.addEventListener('install', function (event) {
     console.log('Service Worker: Installed');
@@ -5,37 +7,27 @@ self.addEventListener('install', function (event) {
 }
 );
 // activate event pwa
-self.addEventListener('activate', function (event) {
-    console.log('Service Worker: Activated');
-    // remove old cache
-    event.waitUntil(
-        caches.keys().then(function (cacheNames) {
-            return Promise.all(
-                cacheNames.map(function (cacheName) {
-                    if (cacheName !== CACHE_NAME) {
-                        console.log('Service Worker: Clearing Old Cache');
-                        return caches.delete(cacheName);
-                    }
-                })
+self.addEventListener('activate', evt => {
+    //console.log('service worker activated');
+    evt.waitUntil(
+        caches.keys().then(keys => {
+            //console.log(keys);
+            return Promise.all(keys
+                .filter(key => key !== CACHE_NAME)
+                .map(key => caches.delete(key))
             );
-        }
-        )
+        })
     );
-}
+});
 
-);
-
-// fetch event pwa
 
 // cache index.html file for offline use
-var CACHE_NAME = 'cache-v2';
 var urlsToCache = [
     '/',
     '/index.html',
     '/assets/favicon.ico',
     '/assets/maze.png',
-    'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
-    'https://cdn.worldvectorlogo.com/logos/twitter-3.svg',
+
 ]
 self.addEventListener('install', function (event) {
     event.waitUntil(
@@ -48,7 +40,7 @@ self.addEventListener('install', function (event) {
 }
 
 );
-self.addEventListener('fetch', function (event) {
+self.addEventListener('fet  ch', function (event) {
     console.log('Service Worker: Fetching')
     console.log(event);
     // show cache  data if available
