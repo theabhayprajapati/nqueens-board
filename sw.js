@@ -50,6 +50,5 @@ self.addEventListener('fetch', function (event) {
             return cache || fetch(event.request);
         })
     );
-
 }
 )
