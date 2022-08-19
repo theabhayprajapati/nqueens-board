@@ -20,158 +20,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700;1,800;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@100;300;400;500;700;900&family=Ropa+Sans&family=Varela+Round&display=swap"
         rel="stylesheet">
-
+    <link rel="stylesheet" href="./assets/style/style.css">
     <meta property="og:image" content="assets/favicon.ico" />
     <title>N - Queens Maze</title>
-
-    <style>
-        body {
-            /* every thing center */
-            padding: 5px;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .box {
-            width: 50px;
-            height: 50px;
-            border: 1px solid black;
-            margin: 0px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-
-
-        .button-50 {
-            appearance: button;
-            background-color: #000;
-            background-image: none;
-            border: 1px solid #000;
-            border-radius: 4px;
-            box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
-            box-sizing: border-box;
-            color: #fff;
-            cursor: pointer;
-            display: inline-block;
-            font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 20px;
-            margin: 0 5px 10px 0;
-            overflow: visible;
-            padding: 12px 40px;
-            text-align: center;
-            text-transform: none;
-            touch-action: manipulation;
-            user-select: none;
-            -webkit-user-select: none;
-            vertical-align: middle;
-            white-space: nowrap;
-        }
-
-        .button-50:focus {
-            text-decoration: none;
-        }
-
-        .button-50:hover {
-            text-decoration: none;
-        }
-
-        .button-50:active {
-            box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
-            outline: 0;
-        }
-
-        .button-50:not([disabled]):active {
-            box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
-            transform: translate(2px, 2px);
-        }
-
-        @media (min-width: 768px) {
-            .button-50 {
-                padding: 12px 50px;
-            }
-        }
-
-        #board {
-            /* 8 cols */
-            display: grid;
-            grid-template-columns: repeat(8, 50px);
-            /* 8 rows */
-            grid-template-rows: repeat(8, 50px);
-            /* border */
-            /* width 50*8 */
-            width: 400px;
-            /* height 50*8 */
-            height: 400px;
-            padding: 0;
-        }
-
-        .media {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 25px;
-            height: 25px;
-        }
-
-        .socials {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-        }
-
-        @media (max-width: 640px) {
-
-            /* 30px box */
-            .box {
-                width: 35px;
-                height: 35px;
-                margin: 0;
-            }
-
-            #board {
-                width: 280px;
-                height: 280px;
-                /* no gaps cols */
-                grid-template-columns: repeat(8, 35px);
-                /* no gaps rows */
-                grid-template-rows: repeat(8, 35px);
-
-            }
-        }
-
-        .red-pulse-box {
-            background-color: red;
-            /* animate pulse for 2 seconds */
-            animation: pulse 2s;
-        }
-
-        @keyframes pulse {
-            0% {
-                background-color: red;
-            }
-
-            50% {
-                background-color: transparent;
-            }
-
-            100% {
-                background-color: red;
-            }
-        }
-
-        details {
-            display: flex;
-            justify-content: start;
-            width: 100%;
-            height: 100%;
-            margin: 10px;
-        }
-    </style>
 
 </head>
 
@@ -222,7 +73,7 @@
 
         </div>
     </center>
-    <script src="./src/index.js"></script>
+    <script type="module" src="./src/index.js"></script>
 </body>
 
 </html>

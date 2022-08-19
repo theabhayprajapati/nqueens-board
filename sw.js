@@ -1,4 +1,4 @@
-var CACHE_NAME = 'cache-v6';
+var CACHE_NAME = 'cache-v11';
 
 // install event pwa
 self.addEventListener('install', function (event) {
@@ -29,6 +29,8 @@ var urlsToCache = [
     '/assets/maze.png',
     '/src/index.js',
     'manifest.json',
+    '/src/utils/utils.js',
+    '/assets/style/style.css'
 ]
 self.addEventListener('install', function (event) {
     event.waitUntil(
