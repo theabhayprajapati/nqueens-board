@@ -1,9 +1,8 @@
-var CACHE_NAME = 'cache-v3';
+var CACHE_NAME = 'cache-v6';
 
 // install event pwa
 self.addEventListener('install', function (event) {
     console.log('Service Worker: Installed');
-
 }
 );
 // activate event pwa
@@ -18,6 +17,7 @@ self.addEventListener('activate', evt => {
             );
         })
     );
+    console.log('deleted old cache');
 });
 
 
@@ -27,7 +27,8 @@ var urlsToCache = [
     '/index.html',
     '/assets/favicon.ico',
     '/assets/maze.png',
-
+    '/src/index.js',
+    'manifest.json',
 ]
 self.addEventListener('install', function (event) {
     event.waitUntil(

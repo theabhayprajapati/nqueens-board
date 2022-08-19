@@ -157,6 +157,7 @@ boxes.forEach((box) => {
         boxes.forEach((box) => {
             makeBlackWhite(box);
         })
+        getData();
 
         if (e.target.getAttribute("selected") == "false") {
             console.info(
@@ -258,3 +259,14 @@ const registerServiceWorker = () => {
     }
 }
 registerServiceWorker();
+// fetch data from api
+const fetchData = async () => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+    const data = await response.json();
+    return data;
+}
+const getData = async () => {
+    console.log('fetching data');
+    const data = await fetchData();
+    return data;
+}
