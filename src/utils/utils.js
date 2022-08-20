@@ -1,13 +1,11 @@
 const RED_SHADE = '#EA3C52'
 
 function vibrate(duration) {
-    console.log("vibrating");
     if (navigator.vibrate) {
         navigator.vibrate(duration);
     }
 }
 const makeBlackWhite = (box) => {
-    console.log('making black white');
     var current_row = Number(box.getAttribute('row'));
     var current_col = Number(box.getAttribute('col'));
     // if addtion of row and col is even then make the background black
@@ -23,7 +21,7 @@ const makeBlackWhite = (box) => {
 }
 
 const updateBoxValues = (row, col, selected_places, total_cols, total_rows) => {
-    console.log(row, " ", col);
+
     for (var i = 0; i < total_rows; i++) {
         selected_places[i][col] = true;
     }
@@ -37,7 +35,6 @@ const updateBoxValues = (row, col, selected_places, total_cols, total_rows) => {
         selected_places[x][y] = true;
         x--;
         y--;
-        console.log('working on diagonals')
     }
     x = row;
     y = col;
@@ -45,7 +42,6 @@ const updateBoxValues = (row, col, selected_places, total_cols, total_rows) => {
         selected_places[x][y] = true;
         x++;
         y--;
-        console.log('working on diagonals')
     }
     x = row;
     y = col;
@@ -53,7 +49,6 @@ const updateBoxValues = (row, col, selected_places, total_cols, total_rows) => {
         selected_places[x][y] = true;
         x--;
         y++;
-        console.log('working on diagonals')
     }
     x = row;
     y = col;
@@ -61,14 +56,10 @@ const updateBoxValues = (row, col, selected_places, total_cols, total_rows) => {
         selected_places[x][y] = true;
         x++;
         y++;
-        console.log('working on diagonals')
     }
-    console.log('selected_places');
-    console.log(selected_places);
 }
 
 const turnAllBoxesAsRed = (boxes, selected_places) => {
-    console.log('true places')
     boxes.forEach((box) => {
         makeBlackWhite(box);
     })
@@ -101,15 +92,12 @@ const winningMessage = (selected_location) => {
 }
 
 const updateColorsOfBoxes = (selected_location, boxes, selected_places, total_cols, total_rows) => {
-    console.log('selected locatoin from colors boxes')
-    console.log(selected_location);
+    console.log(selected_places)
     if (selected_location.length > 0) {
-        console.log('making red.')
         for (var i = 0; i < selected_location.length; i++) {
             updateBoxValues(selected_location[i][0], selected_location[i][1], selected_places, total_cols, total_rows)
         }
     } else {
-        console.log("making all white")
         boxes.forEach((box) => {
             makeBlackWhite(box);
         })

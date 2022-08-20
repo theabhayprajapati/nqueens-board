@@ -45,7 +45,7 @@ self.addEventListener('install', function (event) {
 );
 self.addEventListener('fetch', function (event) {
     console.log('Service Worker: Fetching')
-    console.log(event);
+    
     // show cache  data if available
     event.respondWith(
         caches.match(event.request).then(cache => {
