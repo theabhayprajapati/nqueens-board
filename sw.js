@@ -1,4 +1,4 @@
-var CACHE_NAME = 'cache-v12';
+var CACHE_NAME = 'cache-v14';
 
 // install event pwa
 self.addEventListener('install', function (event) {
@@ -45,7 +45,7 @@ self.addEventListener('install', function (event) {
 );
 self.addEventListener('fetch', function (event) {
     console.log('Service Worker: Fetching')
-    
+
     // show cache  data if available
     event.respondWith(
         caches.match(event.request).then(cache => {

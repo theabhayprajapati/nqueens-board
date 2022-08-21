@@ -118,10 +118,22 @@ const resetAll = (boxes, selected_places, selected_location) => {
         }
     }
     selected_location = [];
+    selected_places = [];
+    localStorage.setItem("selected_location", JSON.stringify(selected_location));
+    console.log(selected_location)
+    console.log('selected_location')
+    console.log(localStorage.getItem("selected_location"))
+
     var total_score = document.getElementById("score");
     total_score.innerHTML = "0";
     var winning_message = document.getElementById("winning-message");
     winning_message.style.display = "none";
+    console.log(
+        localStorage.getItem("selected_location"),
+        selected_location,
+        selected_places,
+    )
+
 }
 export { vibrate, updateColorsOfBoxes, winningMessage, turnAllBoxesAsRed, updateBoxValues, resetAll, makeBlackWhite };
 
