@@ -27,52 +27,29 @@
 
 <body>
     <center>
-        <h1>8queens</h1>
-        <h3>
-            Queens Pending: <span id="score">0</span>
-        </h3>
-        <h3 id="winning-message">
-
-        </h3>
-        <button id="reset" class="button-50">
-            <span>
-                🔃
-            </span>
-            Refresh
+        <button id="100">
+            Vibrate 100
         </button>
-        <details>
-            <summary>
-                Rules for 8queens
-            </summary>
-            <p><Strong>1.</Strong> You have to place only <strong>8</strong> queens in the chess.</p>
-            <p> 2.
-                <strong>
-                    You can't place two or more queens on the same row, column or diagonal.
-                </strong>
-            </p>
-        </details>
-        <!-- make dailog for showing rules -->
-
-        </div>
-        <div id="board"></div>
-        <p>
-            created by <a href="https://twitter.com/abhayprajapati_/" target="_blank">@abhayprajapati</a>
-
-        </p>
-        <div class="socials">
-            <!-- github  twitter -->
-            <a href="
-            https://github.com/theabhayprajapati/nqueens-board" target="_blank">
-                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="github"
-                    class="media" />
-            </a>
-            <a href="https://twitter.com/abhayprajapati_" target="_blank">
-                <img src="https://cdn.worldvectorlogo.com/logos/twitter-3.svg" alt="twitter" class="media" />
-            </a>
-
-        </div>
+        <button id="200">
+            Vibrate 200
+        </button>
+        <button id="300">
+            Vibrate 300
+        </button>
     </center>
     <script type="module" src="./src/index.js"></script>
+    <script>
+        // vibration
+        // loop over all button and get the id of those
+        var buttons = document.getElementsByTagName("button");
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function () {
+                var id = this.getAttribute("id");
+                console.log(id);
+                navigator.vibrate(Number(id));
+            });
+        }
+    </script>
 </body>
 
 </html>
