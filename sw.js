@@ -1,4 +1,4 @@
-var CACHE_NAME = 'cache-v11';
+var CACHE_NAME = 'cache-v16';
 
 // install event pwa
 self.addEventListener('install', function (event) {
@@ -23,9 +23,10 @@ self.addEventListener('activate', evt => {
 
 // cache index.html file for offline use
 var urlsToCache = [
-    '/',
+
     '/index.html',
     '/assets/favicon.ico',
+    '/assets/icons',
     '/assets/maze.png',
     '/src/index.js',
     'manifest.json',
@@ -45,7 +46,7 @@ self.addEventListener('install', function (event) {
 );
 self.addEventListener('fetch', function (event) {
     console.log('Service Worker: Fetching')
-    
+
     // show cache  data if available
     event.respondWith(
         caches.match(event.request).then(cache => {
