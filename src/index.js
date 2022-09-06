@@ -1,4 +1,4 @@
-import { resetAll, turnAllBoxesAsRed, updateColorsOfBoxes, vibrate, winningMessage } from './utils/utils.js';
+import { turnAllBoxesAsRed, updateColorsOfBoxes, vibrate, winningMessage } from './utils/utils.js';
 var board = document.getElementById("board");
 var boxes = [];
 var rows = [];
@@ -132,11 +132,6 @@ boxes.forEach((box) => {
     })
 })
 
-var resetBtn = document.getElementById("reset");
-resetBtn.addEventListener("click", () => {
-    resetAll(boxes, selected_places, selected_location);
-    localStorage.setItem("selected_location", JSON.stringify(selected_location));
-})
 
 // regester service worker
 const registerServiceWorker = () => {
