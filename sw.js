@@ -26,6 +26,7 @@ var urlsToCache = [
     '/',
     '/index.html',
     '/assets/favicon.ico',
+    '/assets/icons',
     '/assets/maze.png',
     '/src/index.js',
     'manifest.json',
