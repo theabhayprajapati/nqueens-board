@@ -133,11 +133,11 @@ boxes.forEach((box) => {
 })
 
 var resetBtn = document.getElementById("reset");
-resetBtn.addEventListener("click",
-    (e) => {
-        resetAll(boxes, selected_places, selected_location);
-    }
-);
+resetBtn.addEventListener("click", () => {
+    resetAll(boxes, selected_places, selected_location);
+    localStorage.setItem("selected_location", JSON.stringify(selected_location));
+})
+
 // regester service worker
 const registerServiceWorker = () => {
     if ('serviceWorker' in navigator) {
