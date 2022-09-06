@@ -133,7 +133,6 @@ const resetAll = (boxes, selected_places, selected_location) => {
         selected_location,
         selected_places,
     )
-
 }
 export { vibrate, updateColorsOfBoxes, winningMessage, turnAllBoxesAsRed, updateBoxValues, resetAll, makeBlackWhite };
 

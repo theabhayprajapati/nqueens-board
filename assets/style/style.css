@@ -14,7 +14,13 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+svg {
+  color: "red";
+}
+h1 {
+  padding: 0;
+  margin: 0;
+}
 .button-50 {
   appearance: button;
   background-color: #000;
