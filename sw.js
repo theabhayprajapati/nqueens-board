@@ -1,4 +1,4 @@
-var CACHE_NAME = 'cache-v17';
+var CACHE_NAME = 'cache-v18';
 
 // install event pwa
 self.addEventListener('install', function (event) {
