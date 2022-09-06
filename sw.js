@@ -23,7 +23,6 @@ self.addEventListener('activate', evt => {
 
 // cache index.html file for offline use
 var urlsToCache = [
-    '/',
     '/index.html',
     '/assets/favicon.ico',
     '/assets/icons',
