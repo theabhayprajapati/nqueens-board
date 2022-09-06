@@ -1,4 +1,4 @@
-import { turnAllBoxesAsRed, updateColorsOfBoxes, vibrate, winningMessage } from './utils/utils.js';
+import { turnAllBoxesAsRed, updateColorsOfBoxes, vibrate, winningMessage } from './src/utils/utils.js';
 var board = document.getElementById("board");
 var boxes = [];
 var rows = [];
