@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://8queens/./src/index.js?");
+eval("/* eslint-disable functional/no-expression-statement */\r\nconst hello =\"Hellow\";\r\nconsole.log(hello);\n\n//# sourceURL=webpack://8queens/./src/index.js?");
 
 /***/ })
 
