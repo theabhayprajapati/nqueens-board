@@ -1,0 +1,14 @@
+{
+  "plugins": ["functional"],
+  "extends": ["plugin:functional/recommended"],
+  "rules": {
+    "functional/immutable-data": "error"
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "env": {
+    "es6": true
+  },
+  "ignorePatterns": ["node_modules/", "main.js"]
+}
