@@ -1,3 +1,4 @@
+/* eslint-disable functional/no-this-expression */
 /* eslint-disable functional/no-loop-statement */
 /* eslint-disable functional/functional-parameters */
 /* eslint-disable functional/no-conditional-statement */
@@ -25,7 +26,7 @@ for (var i = 0; i < total_rows; i++) {
         box.style.backgroundColor = "black";
         // if the row and col addition is even then make the background black
         if ((i + j) % 2 == 0) {
-            box.style.backgroundColor = "white";
+            box.style.backgroundColor = "#837E7E";
         }
         box.style.gridColumn = j + 1;
         box.style.gridRow = i + 1;
@@ -81,7 +82,7 @@ const initail_setup = () => {
 initail_setup();
 boxes.forEach((box) => {
     console.log('adding event listener to box.');
-    box.addEventListener("click", (e) => {
+    box.addEventListener("click", async (e) => {
         console.log('box clicked.');
         var row = e.target.getAttribute("row");
         var col = e.target.getAttribute("col");
@@ -105,6 +106,22 @@ boxes.forEach((box) => {
                 updateColorsOfBoxes(selected_location, boxes,
                     selected_places, total_cols, total_rows);
                 turnAllBoxesAsRed(boxes, selected_places);
+                if (selected_location.length == 8) {
+                    localStorage.setItem('selected_location', JSON.stringify(selected_location));
+                    /* turn all boxes green */
+                    boxes.forEach((box) => {
+                        box.style.backgroundColor = "#90ee90";
+                    }
+                    )
+                    /* #win-msg */
+                    var win_msg = document.getElementById("win-msg");
+                    win_msg.style.display = "flex";
+                    party.confetti(document.body);
+
+                    /* disly none after 5 secs */
+
+
+                }
                 vibrate(100);
             }
         }
