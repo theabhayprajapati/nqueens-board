@@ -117,8 +117,7 @@ boxes.forEach((box) => {
                     var win_msg = document.getElementById("win-msg");
                     win_msg.style.display = "flex";
                     party.confetti(document.body);
-
-                    /* disly none after 5 secs */
+                    
 
 
                 }
