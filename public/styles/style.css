@@ -192,18 +192,18 @@ body {
 @media (max-width: 640px) {
   /* 30px box */
   .box {
-    width: 35px;
-    height: 35px;
+    width: 42px;
+    height: 42px;
     margin: 0;
   }
 
   #board {
-    width: 280px;
-    height: 280px;
+    width: 336px;
+    height: 336px;
     /* no gaps cols */
-    grid-template-columns: repeat(8, 35px);
+    grid-template-columns: repeat(8, 42px);
     /* no gaps rows */
-    grid-template-rows: repeat(8, 35px);
+    grid-template-rows: repeat(8, 42px);
   }
 }
 
