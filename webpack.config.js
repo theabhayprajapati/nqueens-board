@@ -6,8 +6,8 @@ const path = require('path');
 module.exports = {
     entry: './src/index.js',
     output: {
-        publicPath: 'public',
-        path: path.resolve(__dirname, 'public'),
+        publicPath: 'open',
+        path: path.resolve(__dirname, 'open'),
         filename: 'main.js'
     }
 };
