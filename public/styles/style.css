@@ -28,17 +28,20 @@ body {
   height: 100px;
   left: 69px;
   top: 50px;
+  margin-bottom: 0;
 }
 .title-desc {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
   line-height: 24px;
   display: flex;
   align-items: center;
   width: 100%;
   text-align: center;
+  font-size: 13px;
+  margin-top: 0;
+  margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
   justify-content: space-around;
@@ -55,6 +58,7 @@ body {
   background: #302f2f;
   border-radius: 5px;
   color: white;
+  margin-top: 3rem;
 }
 /* after mobil screen */
 @media (min-width: 640px) {
