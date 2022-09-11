@@ -18,7 +18,7 @@ const createBoard = (SELECTED_BOXES) => {
             BOX.style.backgroundColor = 'black';
             /* if the row and col addition is even then make the background black */
             if ((i + j) % 2 === 0) {
-                BOX.style.backgroundColor = 'white';
+                BOX.style.backgroundColor = '#837E7E';
             }
             BOX.style.gridColumn = j + 1;
             BOX.style.gridRow = i + 1;
