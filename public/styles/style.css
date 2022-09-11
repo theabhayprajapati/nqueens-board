@@ -188,6 +188,7 @@ body {
 
 .socials {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-left: auto;
@@ -195,7 +196,9 @@ body {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-
+.footer-line {
+height: 10px;
+}
 @media (max-width: 640px) {
   /* 30px box */
   .box {
