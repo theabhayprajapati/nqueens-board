@@ -197,7 +197,13 @@ body {
   margin-bottom: 2rem;
 }
 .footer-line {
-height: 10px;
+  height: 10px;
+}
+.producthunt {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 2rem auto;
 }
 @media (max-width: 640px) {
   /* 30px box */
