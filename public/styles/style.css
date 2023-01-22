@@ -66,6 +66,23 @@ body {
   width: 400px;
   margin-bottom: 0;
 }
+
+.tutorial h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.tutorial ol {
+  list-style: decimal;
+  margin-left: 50px;
+  text-align: left;
+}
+.tutorial li {
+  margin-bottom: 10px;
+}
+.tutorial p {
+  font-size: 18px;
+  margin-top: 20px;
+}
 .footer-line {
   height: 10px;
   margin-top: 1rem;
@@ -261,6 +278,9 @@ body {
     margin: 0;
   }
 
+  .tutorial {
+    width: 336px;
+  }
   #board {
     width: 336px;
     height: 336px;
