@@ -17,7 +17,20 @@ var total_rows = 8;
 var selected_location = [];
 var selected_places = [];
 var total_boxes = total_cols * total_rows;
-
+function renderQueensOfTop(times) {
+    const queensDiv = document.getElementById('queens');
+    queensDiv.innerHTML = "";
+    for (var i = 0; i < (8 - times); i++) {
+        const textnode = document.createTextNode("👑");
+        queensDiv.appendChild(textnode);
+    }
+    const makeATweetBTn = document.getElementById('makeATweetBTn');
+    if (times > 0) {
+        makeATweetBTn.style.visibility = "visible";
+    } else {
+        makeATweetBTn.style.visibility = "hidden";
+    }
+}
 for (var i = 0; i < total_rows; i++) {
     console.log('starting to create maze.');
     for (var j = 0; j < total_cols; j++) {
@@ -72,12 +85,12 @@ const initail_setup = () => {
                     box.innerHTML = "👑";
                 }
             })
+            renderQueensOfTop(selected_location.length)
         })
         updateColorsOfBoxes(selected_location, boxes, selected_places, total_cols, total_rows);
         turnAllBoxesAsRed(boxes, selected_places);
     }
     console.log('got data from local storage.');
-
 }
 initail_setup();
 boxes.forEach((box) => {
@@ -117,7 +130,7 @@ boxes.forEach((box) => {
                     var win_msg = document.getElementById("win-msg");
                     win_msg.style.display = "flex";
                     party.confetti(document.body);
-                    
+
 
 
                 }
@@ -151,6 +164,30 @@ boxes.forEach((box) => {
         }
         localStorage.setItem("selected_location", JSON.stringify(selected_location));
         console.log(localStorage.getItem("selected_location"));
-
+        renderQueensOfTop(selected_location.length);
     })
 })
+
+const resetBtn = document.getElementById("reset-btn");
+resetBtn.addEventListener("click", () => {
+    console.log('reset button clicked.');
+    localStorage.removeItem("selected_location");
+    location.reload();
+}
+);
+
+/* 
+https://twitter.com/intent/tweet?text=%E2%AD%95%EF%B8%8F%20My%20circle%20is%2066.0%25%20perfect%2C%20can%20you%20beat%20that%3F&url=https%3A%2F%2Fneal.fun%2Fperfect-circle%2F
+*/
+const makeTweet = (score) => {
+    var tweet = "I have placed " + score + "/ 8 queens perfectly on the maze, can you beat that?";
+    var forUserSolveMoreThan8 = `"Just solved the #BoardOfNQueens puzzle! Can you beat my time? #NQueens #Gaming #Challenge"`
+    var url = "https://maze.abhayprajapati.me";
+    var tweetUrl = "https://twitter.com/intent/tweet?text=" + tweet + "&url=" + url;
+    window.open(tweetUrl, "_blank");
+}
+const makeATweetBTn = document.getElementById("makeATweetBTn");
+makeATweetBTn.addEventListener("click", () => {
+    makeTweet(selected_location.length);
+}
+);

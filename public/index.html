@@ -5,73 +5,122 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0" />
-    <meta name=" title" content="N-Queens Maze" />
-    <meta name="description" content="An better way to solve n queens maze." />
-    <meta name="keywords" content="8queens" />
+    <meta name=" title" content="N-Queens Maze" />>
+    <meta name="keywords"
+        content="NQueens, Board of NQueens, 8 queens, 8x8 board, problem-solving, computer science, game, puzzle, strategy, classic problem" />
     <meta name="author" content="abhayprajapati" />
+
+    <!-- HTML Meta Tags -->
+    <title>Board Of NQueens Maze</title>
+    <meta name="description" content="An better way to solve n queens maze.">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://maze.abhayprajapati.me/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Board Of N👑 Maze">
+    <meta property="og:description" content="Solve N Queen Maze 👑">
+    <meta property="og:image" content="/screenshots/board.png">
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="maze.abhayprajapati.me">
+    <meta property="twitter:url" content="https://maze.abhayprajapati.me/">
+    <meta name="twitter:title" content="Board Of NQueens Maze">
+    <meta name="twitter:description" content="An better way to solve n queens maze.">
+    <meta name="twitter:image" content="/screenshots/board.png">
+
+    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="apple-touch-icon" href="/favicon.ico" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700;1,800;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@100;300;400;500;700;900&family=Ropa+Sans&family=Varela+Round&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
-    <meta property="og:image" content="/favicon.ico" />
+    <meta property="og:image" content="/screenshots/board.png" />
     <title>Board Of NQueens Maze</title>
 </head>
 
 <body>
-    <nav id="win-msg" style="display: none;">
-        Yahh! You won.
-    </nav>
-    <!-- product hunt -->
-    <div class="producthunt">
-        <a href="https://www.producthunt.com/posts/n-queen-maze?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-n&#0045;queen&#0045;maze"
-            target="_blank"><img
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=356316&theme=light"
-                alt="N&#0032;Queen&#0032;Maze - Have&#0032;a&#0032;look&#0032;to&#0032;nqueen&#0032;Maze&#0046; | Product Hunt"
-                style="width: 250px; height: 54px;" width="250" height="54" /></a>
-    </div>
-    <h1 class="title-header">
-        Board Of N Queens
-    </h1>
-    <p class="title-desc">
-        A Simple Computer Science Problem
-    </p>
-
-    <!--  
-    <div class="tab-bar"> 
-        <div class="tab-bar-item">
-            <button class="tab-bar-item-btn" id="solve-btn">
-                4 Queens
+    <div class="app">
+        <nav id="win-msg" style="display: none;">
+            Yahh! You won.
+        </nav>
+        <!-- product hunt -->
+        <div class="producthunt">
+            <a href="https://www.producthunt.com/posts/n-queen-maze?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-n&#0045;queen&#0045;maze"
+                target="_blank"><img
+                    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=356316&theme=light"
+                    alt="N&#0032;Queen&#0032;Maze - Have&#0032;a&#0032;look&#0032;to&#0032;nqueen&#0032;Maze&#0046; | Product Hunt"
+                    style="width: 250px; height: 54px;" width="250" height="54" /></a>
+        </div>
+        <h1 class="title-header">
+            Board Of N Queens
+        </h1>
+        <p class="title-desc">
+            A Simple Computer Science Problem
+        </p>
+        <div class="btns">
+            <button id="reset-btn" class="btn">
+                Reset
             </button>
         </div>
-        <div class="tab-bar-item">
-            <button class="tab-bar-item-btn" id="reset-btn">
-                8 Queens
+        <div id="queens">
+            👑👑👑👑👑👑👑
+        </div>
+        <div id="board"></div>
+        <div>
+            <button data-btn="twit" id="makeATweetBTn">
+                Tweet
             </button>
         </div>
+        <div class="tutorial">
+            <h1>
+                How to play
+            </h1>
+            <div class="list-tut">
+                <li>
+                    <p>
+                        You have given a maze board of <strong>8X8</strong> places with <strong>8</strong> number of
+                        queens(pieces).
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        There the board is having 3 colors <span style="color:white">white</span>, <span
+                            style="color:white">black</span>, <span style="color:red">red</span>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        You cannot place queen on <span style="color:red">red</span> square.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        You will only will if you place all the 8 queens in correct manner, and non of them are placed
+                        on
+                        the red square.
+                    </p>
+                </li>
+            </div>
+        </div>
+        <footer class="socials">
+            <p class="footer-line">
+                created with ❤️ by &nbsp; @ <a href="https://twitter.com/AbhayPrajapati_" target="_blank"
+                    rel="noopener noreferrer"><u>abhayprajapati</u></a>
+            </p>
+            <p class="footer-line">
+                <a href="https://github.com/theabhayprajapati/nqueens-board" target="_blank" rel="noopener noreferrer">
+                    <img src="./icons/github.svg" alt="github" />
+                </a>
+                <!-- twitter.com/abhayprajaapati -->
+                <a href="https://twitter.com/AbhayPrajapati_" target="_blank" rel="noopener noreferrer">
+                    <img src="./icons/twitter.svg" alt="twitter" />
+                </a>
+            </p>
+        </footer>
     </div>
- -->
-    <div id="board"></div>
-
-    <footer class="socials">
-        <p class="footer-line">
-            created with ❤️ by &nbsp; @<u>abhayprajapati</u>
-        </p>
-        <p class="footer-line">
-            <a href="https://github.com/theabhayprajapati/nqueens-board" target="_blank" rel="noopener noreferrer">
-                <img src="./icons/github.svg" alt="github" />
-            </a>
-            <!-- twitter.com/abhayprajaapati -->
-            <a href="https://twitter.com/AbhayPrajapati_" target="_blank" rel="noopener noreferrer">
-                <img src="./icons/twitter.svg" alt="twitter" />
-            </a>
-        </p>
-    </footer>
     <script type="module" src="./main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 </body>
