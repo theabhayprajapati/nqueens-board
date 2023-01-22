@@ -129,7 +129,7 @@ boxes.forEach((box) => {
                     /* #win-msg */
                     var win_msg = document.getElementById("win-msg");
                     win_msg.style.display = "flex";
-                    party.confetti(document.body);
+                    party.confetti(document.getElementById('board'));
 
 
 
